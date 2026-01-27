@@ -3,6 +3,7 @@
 <head>
     <title>Haikyuu Quiz</title>
     <link rel="stylesheet" href="/css/welcome.css">
+    <source src="{{ asset('videos/haikyuuloop.mp4') }}" type="video/mp4">
 </head>
 <body>
 
@@ -116,7 +117,7 @@
 
         </button>
 
-        <button class="star-btn" onclick="window.location.href='{{ url('quiz') }}'">
+        <button class="star-btn" onclick="window.location.href='{{ url('quiz/start') }}'">
           Start Quiz
 
           <!-- STAR SVGs -->
