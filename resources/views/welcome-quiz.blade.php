@@ -4,7 +4,7 @@
 <head>
     <title>Haikyuu Quiz</title>
     <link rel="stylesheet" href="/css/welcome.css">
-    <link rel="stylesheet" href="{{ asset('css/audio.css') }}">
+    <link rel="icon" type="image/png" href="/images/haikyuu-tab.png">
 </head>
 
 <body>
@@ -12,8 +12,21 @@
         <source src="{{ asset('audio/flyhigh.mp3') }}" type="audio/mpeg">
     </audio>
 
-    <div id="music-toggle" class="music-btn">🎵 Play Music</div>
-    <script src="{{ asset('js/audio.js') }}" defer></script>
+<header class="navbar">
+    <div class="logo"><img src="/images/haikyuu-logo.png" alt="Haikyuu Logo">
+    <span>Quiz</span>
+    </div>
+    <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Quiz</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="auth-links">
+        <a href="#">Login</a>
+        <a href="#">Sign Up</a>
+    </div>
+</header>
 
     <header class="navbar">
         <div class="logo">Haikyuu Quiz</div>

@@ -17,15 +17,33 @@ body {
     color: white;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 45px;
+  width: auto;
+}
+
+.logo span {
+  font-size: 22px;
+}
+
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 5;
-    background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px; 
+  padding: 0 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 5;
+  background: rgba(0,0,0,0.4);
+  box-sizing: border-box;
 }
 
 .logo {

@@ -1,5 +1,11 @@
+@font-face {
+    font-family: 'Fredoka';
+    src: url('/fonts/Fredoka-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 400;
+}
+
 body {
-    font-family: Arial;
+    font-family: 'Fredoka', sans-serif;
     background: #f0fff4;
     text-align: center;
     padding-top: 100px;
