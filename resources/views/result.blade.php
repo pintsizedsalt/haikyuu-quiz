@@ -4,6 +4,7 @@
     <title>Quiz Result</title>
     <link rel="stylesheet" href="/css/result.css">
     <link rel="stylesheet" href="{{ asset('css/audio.css') }}">
+    <link rel="icon" type="image/png" href="/images/haikyuu-tab.png">
 
 </head>
 <body>

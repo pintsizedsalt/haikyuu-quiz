@@ -5,6 +5,7 @@
     <title>Haikyuu Quiz</title>
     <link rel="stylesheet" href="/css/quiz.css">
     <link rel="stylesheet" href="{{ asset('css/audio.css') }}">
+    <link rel="icon" type="image/png" href="/images/haikyuu-tab.png">
 
 </head>
 

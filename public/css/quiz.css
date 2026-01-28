@@ -13,7 +13,7 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.75); /* transparency */
+    background: rgba(255, 255, 255, 0.75);
     width: 1000px;
     height: 550px;
     margin: auto;
@@ -122,11 +122,11 @@ button {
 }
 
 .hover {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   z-index: 200;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .bt-1 {
