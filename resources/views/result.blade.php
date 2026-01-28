@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Quiz Result</title>
-    <link rel="stylesheet" href="{{ asset('css/result.css') }}">
-</head>
-<body>
+@extends('layouts.app')
 
+@section('title', 'Quiz Result')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/result.css') }}">
+@endpush
+
+@section('content')
 <div class="result-container">
     <div class="result-card">
         <h1>🏐 Quiz Finished!</h1>
@@ -19,11 +20,8 @@
         @endif
 
         <a href="{{ url('quiz/start') }}" class="retry-btn">🔁 Retry Quiz</a>
-        
-        <br>
+        <br><br>
         <a href="{{ url('/') }}" class="home-btn">🏠 Back to Home</a>
     </div>
 </div>
-
-</body>
-</html>
+@endsection

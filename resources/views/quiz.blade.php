@@ -1,33 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Haikyuu Quiz</title>
-    <link rel="stylesheet" href="/css/quiz.css">
-</head>
-<body>
+@extends('layouts.app')
 
-<div class="card">
-    <h3>Question {{ $number }}</h3>
-    <p><strong>{{ $question['question'] }}</strong></p>
+@section('title', 'Quiz')
 
-    <form method="POST" action="/quiz">
-        @csrf
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/quiz.css') }}">
+@endpush
 
-        <div class="options">
-            @foreach ($question['options'] as $option)
-                <label>
-                    <input type="radio" name="answer" value="{{ $option['name'] }}" required>
-                    <div class="option">
-                        <img src="/images/{{ $option['image'] }}" alt="{{ $option['name'] }}">
-                        <span>{{ $option['name'] }}</span>
-                    </div>
-                </label>
-            @endforeach
-        </div>
+@section('content')
+    <div class="card">
+        <h3>Question {{ $number }}</h3>
+        <p><strong>{{ $question['question'] }}</strong></p>
 
-        <button type="submit">Next ➡️</button>
-    </form>
-</div>
+        <form method="POST" action="{{ url('/quiz') }}">
+            @csrf
 
-</body>
-</html>
+            <div class="options">
+                @foreach ($question['options'] as $option)
+                    <label>
+                        <input type="radio" name="answer" value="{{ $option['name'] }}" required>
+                        <div class="option">
+                            <img src="{{ asset('images/' . $option['image']) }}" alt="{{ $option['name'] }}">
+                            <span>{{ $option['name'] }}</span>
+                        </div>
+                    </label>
+                @endforeach
+            </div>
+
+            <button type="submit">Next ➡️</button>
+        </form>
+    </div>
+@endsection
