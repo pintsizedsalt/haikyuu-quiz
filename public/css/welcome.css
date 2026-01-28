@@ -82,7 +82,7 @@ body {
 
 .content h1 {
     font-family: 'Dimis', sans-serif;
-    font-size: 80px;
+    font-size: 75px;
     margin: 0;
 }
 
@@ -94,13 +94,13 @@ body {
 }
 
 .content h1:hover {
-    color: #ff5c8a;
+    color: #ffa250;
     transform: translateY(-4px);
     transition: color 0.3s, transform 0.3s;
 }
 
 .content p:hover {
-    color: #ffb3d1;
+    color: #ffa250;
     transform: translateY(-2px);
     transition: color 0.3s, transform 0.3s;
 }
@@ -122,13 +122,13 @@ body {
 }
 
 .btn-primary {
-    background: #ff5c8a;
+    background: #fcab41;
     color: white;
 }
 
 .btn-outline {
-    border: 2px solid #ff5c8a;
-    color: #ff5c8a;
+    border: 2px solid #000000;
+    color: #fcab41;
     background: transparent;
 }
 
@@ -137,7 +137,7 @@ body {
 }
 
 .btn-outline:hover {
-    background: #ff5c8a;
+    background: #fcab41;
     color: white;
 
 }

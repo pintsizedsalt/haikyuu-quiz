@@ -32,7 +32,7 @@
         <h1>Welcome to my Haikyuu Quiz!</h1>
         <p>Let’s have fun and see if you really know Haikyuu!</p>
 
-        <button class="star-btn" onclick="window.open('https://github.com/yourusername', '_blank')">
+        <button class="star-btn" onclick="window.open('https://github.com/pintsizedsalt', '_blank')">
           Follow me on GitHub
 
           <!-- STAR SVGs (same as above) -->
@@ -201,7 +201,7 @@
         </button>
         </div>
     </div>
-    
+
 </div>
 </body>
 </html>

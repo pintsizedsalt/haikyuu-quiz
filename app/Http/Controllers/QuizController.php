@@ -10,12 +10,12 @@ class QuizController extends Controller
     [
         'question' => 'Guess who is my favorite Haikyuu character?',
         'options' => [
-            ['name' => 'Hinata', 'image' => 'hinata.jpg'],
-            ['name' => 'Kageyama', 'image' => 'kageyama.jpg'],
-            ['name' => 'Oikawa', 'image' => 'oikawa.jpg'],
-            ['name' => 'Kuroo', 'image' => 'kuroo.jpg'],
+            ['name' => 'Tsukki', 'image' => 'tsukki.jpg'],
+            ['name' => 'Atsumu', 'image' => 'atsumu.jpg'],
+            ['name' => 'Akaashi', 'image' => 'akaashi.jpg'],
+            ['name' => 'Yaku', 'image' => 'yaku.jpg'],
         ],
-        'answer' => 'Kuroo'
+        'answer' => 'Yaku'
     ],
     [
         'question' => 'Who is the captain of Karasuno?',
@@ -28,34 +28,34 @@ class QuizController extends Controller
         'answer' => 'Daichi'
     ],
     [
-        'question' => 'Who is Karasuno’s setter?',
+        'question' => 'Who is Inarizaki’s setter?',
         'options' => [
-            ['name' => 'Hinata', 'image' => 'hinata.jpg'],
+            ['name' => 'Atsumu', 'image' => 'atsumu.jpg'],
             ['name' => 'Kageyama', 'image' => 'kageyama.jpg'],
-            ['name' => 'Nishinoya', 'image' => 'nishinoya.jpg'],
-            ['name' => 'Tsukishima', 'image' => 'tsukishima.jpg'],
+            ['name' => 'Shinsuke', 'image' => 'shinsuke.jpg'],
+            ['name' => 'Osamu', 'image' => 'osamu.jpg'],
         ],
-        'answer' => 'Kageyama'
+        'answer' => 'Atsumu'
     ],
     [
-        'question' => 'What team did Karasuno beat in the Spring Tournament?',
+        'question' => 'Which team defeated Karasuno in the Spring Tournament?',
         'options' => [
             ['name' => 'Shiratorizawa', 'image' => 'shiratorizawa.jpg'],
             ['name' => 'Inarizaki', 'image' => 'inarizaki.jpg'],
+            ['name' => 'Kamomedai', 'image' => 'kamomedai.jpg'],
             ['name' => 'Nekoma', 'image' => 'nekoma.jpg'],
-            ['name' => 'Date Tech', 'image' => 'datetech.jpg'],
         ],
-        'answer' => 'Inarizaki'
+        'answer' => 'Kamomedai'
     ],
     [
-        'question' => 'Who is the libero of Nekoma?',
+        'question' => 'Who is the ace of Kamomedai?',
         'options' => [
-            ['name' => 'Yaku', 'image' => 'yaku.jpg'],
-            ['name' => 'Kenma', 'image' => 'kenma.jpg'],
-            ['name' => 'Lev', 'image' => 'lev.jpg'],
+            ['name' => 'Sachirou', 'image' => 'sachirou.jpg'],
+            ['name' => 'Hoshiumi', 'image' => 'hoshiumi.jpg'],
+            ['name' => 'Oikawa', 'image' => 'oikawa.jpg'],
             ['name' => 'Kuroo', 'image' => 'kuroo.jpg'],
         ],
-        'answer' => 'Yaku'
+        'answer' => 'Hoshiumi'
     ],
 ];
 
