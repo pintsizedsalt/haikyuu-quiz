@@ -19,8 +19,47 @@
 <div class="result">
     <h1>🏐 Quiz Finished!</h1>
     <h2>Your Score: {{ $score }} / 5</h2>
-    <a href="/quiz">🔁 Retry</a>
+
+    <div class="actions">
+
+    <a href="/quiz" class="cube-link">
+        <div class="scene">
+            <div class="cube retry">
+                <span class="side top">
+                    <img src="{{ asset('icons/refresh.svg') }}" class="cube-icon">
+                    <span>Again?</span>
+                </span>
+                <span class="side front">
+                    <img src="{{ asset('icons/refresh.svg') }}" class="cube-icon">
+                    <span>Retry</span>
+                </span>
+            </div>
+        </div>
+    </a>
+
+    <a href="/welcome.quiz" class="cube-link">
+        <div class="scene">
+            <div class="cube home">
+                <span class="side top">
+                    <img src="{{ asset('icons/home.svg') }}" class="cube-icon">
+                    <span>Go Back</span>
+                </span>
+                <span class="side front">
+                    <img src="{{ asset('icons/home.svg') }}" class="cube-icon">
+                    <span>Home</span>
+                </span>
+            </div>
+        </div>
+    </a>
+
+    </div>
+
 </div>
 
 </body>
+
+<video autoplay muted loop class="bg-video">
+    <source src="{{ asset('videos/haikyuu.mp4') }}" type="video/mp4">
+</video>
+
 </html>
