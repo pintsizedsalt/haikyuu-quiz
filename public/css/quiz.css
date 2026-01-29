@@ -12,6 +12,14 @@ body {
     padding-top: 80px;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
 .card {
     background: rgba(255, 255, 255, 0.75);
     width: 1000px;
@@ -91,184 +99,57 @@ label {
     cursor: pointer;
 }
 
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: transparent;
-    color: black;
-    border: 2px solid black;
-    border-radius: 10px;
-    pointer-events: auto;
-    z-index: 300;
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
 }
 
-.container-button {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "bt-1 bt-2 bt-3"
-    "bt-4 bt-5 bt-6";
-  position: relative;
-  perspective: 800;
-  padding: 0;
-  width: 135px;
-  height: 47px;
-  transition: all 0.3s ease-in-out;
-  margin: 20px auto;
-}
-
-.container-button:active {
-  transform: scale(0.95);
-}
-
-.hover {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 200;
-  pointer-events: auto;
-}
-
-.bt-1 {
-  grid-area: bt-1;
-}
-
-.bt-2 {
-  grid-area: bt-2;
-}
-
-.bt-3 {
-  grid-area: bt-3;
-}
-
-.bt-4 {
-  grid-area: bt-4;
-}
-
-.bt-5 {
-  grid-area: bt-5;
-}
-
-.bt-6 {
-  grid-area: bt-6;
-}
-
-.bt-1:hover ~ button {
-  transform: rotateX(15deg) rotateY(-15deg) rotateZ(0deg);
-  box-shadow: -2px -2px #18181888;
-}
-
-.bt-1:hover ~ button::after {
-  animation: shake 0.5s ease-in-out 0.3s;
-  text-shadow: -2px -2px #18181888;
-}
-
-.bt-3:hover ~ button {
-  transform: rotateX(15deg) rotateY(15deg) rotateZ(0deg);
-  box-shadow: 2px -2px #18181888;
-}
-
-.bt-3:hover ~ button::after {
-  animation: shake 0.5s ease-in-out 0.3s;
-  text-shadow: 2px -2px #18181888;
-}
-
-.bt-4:hover ~ button {
-  transform: rotateX(-15deg) rotateY(-15deg) rotateZ(0deg);
-  box-shadow: -2px 2px #18181888;
-}
-
-.bt-4:hover ~ button::after {
-  animation: shake 0.5s ease-in-out 0.3s;
-  text-shadow: -2px 2px #18181888;
-}
-
-.bt-6:hover ~ button {
-  transform: rotateX(-15deg) rotateY(15deg) rotateZ(0deg);
-  box-shadow: 2px 2px #18181888;
-}
-
-.bt-6:hover ~ button::after {
-  animation: shake 0.5s ease-in-out 0.3s;
-  text-shadow: 2px 2px #18181888;
-}
-
-.hover:hover ~ button::before {
-  background: transparent;
-}
-
-.hover:hover ~ button::after {
-  content: "You Sure?";
-  top: -150%;
-  transform: translate(-50%, 0);
-  font-size: 25px;
-  color: #f19c2b;
-}
-
-button {
-  position: absolute;
-  padding: 0;
-  width: 135px;
-  height: 47px;
-  background: #f19c2b;
-  font-size: 17px;
-  font-weight: 900;
-  border: 2px solid #000000;
-  border-radius: 12px;
-  transition: all 0.3s ease-in-out;
-}
-
-button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 135px;
-  height: 47px;
-  background-color: #f5ae51;
-  border-radius: 12px;
-  transition: all 0.3s ease-in-out;
-  z-index: -1;
-}
-
-button::after {
-  content: "Next ->";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 135px;
-  height: 47px;
-  background-color: transparent;
-  font-size: 17px;
-  font-weight: 900;
-  line-height: 47px;
-  color: #000000;
+.btn {
+  margin-top: 25px;
+  font-size: 1.1rem;
+  padding: 0.9rem 2.5rem;
   border: none;
-  border-radius: 12px;
-  transition: all 0.3s ease-in-out;
-  z-index: 2;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  /* DEFAULT STATE */
+  background: #000000;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  /* LIGHT ORANGE GLOW */
+  box-shadow:
+    0 0 18px rgba(245, 174, 81, 0.5),
+    0 8px 25px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.4s ease;
 }
 
-@keyframes shake {
-  0% {
-    left: 45%;
-  }
+.btn:hover {
+  /* HOVER GRADIENT */
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f5ae51 50%,
+    #000000 100%
+  );
 
-  25% {
-    left: 54%;
-  }
+  color: #111;
+  transform: translateY(-2px);
 
-  50% {
-    left: 48%;
-  }
+  box-shadow:
+    0 0 35px rgba(245, 174, 81, 0.9),
+    0 15px 35px rgba(0, 0, 0, 0.8);
+}
 
-  75% {
-    left: 52%;
-  }
-
-  100% {
-    left: 50%;
-  }
+.btn:active {
+  transform: scale(0.95);
 }

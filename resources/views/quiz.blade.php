@@ -35,19 +35,30 @@
                 @endforeach
             </div>
 
-            <div class="container-button">
-                <div class="hover bt-1"></div>
-                <div class="hover bt-2"></div>
-                <div class="hover bt-3"></div>
-                <div class="hover bt-4"></div>
-                <div class="hover bt-5"></div>
-                <div class="hover bt-6"></div>
-                <button type="submit"></button>
-            </div>
+            <button type="submit" class="btn">Next →</button>
 
         </form>
     </div>
 
 </body>
+
+<video autoplay muted loop playsinline class="bg-video">
+    <source src="{{ asset('videos/kageyama.mp4') }}" type="video/mp4">
+</video>
+
+<audio id="option-sound">
+    <source src="{{ asset('audio/select.mp3') }}" type="audio/mpeg">
+</audio>
+
+<script>
+  const optionSound = document.getElementById('option-sound');
+
+  document.querySelectorAll('.option').forEach(option => {
+    option.addEventListener('click', () => {
+      optionSound.currentTime = 0;
+      optionSound.play();
+    });
+  });
+</script>
 
 </html>
