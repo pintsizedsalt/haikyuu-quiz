@@ -36,7 +36,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px; 
+  height: 70px;
   padding: 0 40px;
   position: fixed;
   width: 100%;
@@ -61,7 +61,7 @@ body {
 
 .nav-links a:hover,
 .auth-links a:hover {
-    color: #ff5c8a;
+    color: #ffa250;
 }
 
 .welcome-page {
@@ -314,7 +314,7 @@ button:hover .star-6 {
 }
 
 .star-btn:hover {
-  transform: translateY(-6px); /* konting taas lang */
+  transform: translateY(-6px);
 }
 
 .fil0 {
