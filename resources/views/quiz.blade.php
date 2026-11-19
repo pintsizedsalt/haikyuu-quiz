@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <audio id="haikyuu-bgm" loop>
+    <audio id="haikyuu-bgm" loop preload="auto" autoplay>
         <source src="{{ asset('audio/flyhigh.mp3') }}" type="audio/mpeg">
     </audio>
-    <div id="music-toggle" class="music-btn">🎵 Play Music</div>
+    <div id="music-toggle" class="music-btn">?? Play Music</div>
     <script src="{{ asset('js/audio.js') }}" defer></script>
 
     <div class="card">
@@ -35,16 +35,24 @@
                 @endforeach
             </div>
 
-            <button type="submit" class="btn">Next →</button>
+            <button type="submit" class="btn">Next ?</button>
 
         </form>
     </div>
 
 </body>
 
-<video autoplay muted loop playsinline class="bg-video">
+<video autoplay muted loop playsinline class="bg-video" id="bg-video" poster="/images/kageyama.jpg" onerror="this.style.display='none'">
     <source src="{{ asset('videos/kageyama.mp4') }}" type="video/mp4">
 </video>
+<script>
+    const bgVideo = document.getElementById('bg-video');
+    if (bgVideo) {
+        bgVideo.play().catch(() => {
+            document.addEventListener('click', () => bgVideo.play(), { once: true });
+        });
+    }
+</script>
 
 <audio id="option-sound">
     <source src="{{ asset('audio/select.mp3') }}" type="audio/mpeg">

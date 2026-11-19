@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <audio id="haikyuu-bgm" loop preload="auto">
+    <audio id="haikyuu-bgm" loop preload="auto" autoplay>
         <source src="{{ asset('audio/flyhigh.mp3') }}" type="audio/mpeg">
     </audio>
     <div id="music-toggle" class="music-btn">🎵 Play Music</div>
@@ -33,11 +33,20 @@
 
     <div class="welcome-page">
 
-        <video autoplay muted loop class="bg-video">
-            <source src="/videos/haikyuuloop.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline class="bg-video" id="bg-video" poster="/images/bg.jpg" onerror="this.style.display='none'">
+            <source src="{{ asset('videos/haikyuuloop.mp4') }}" type="video/mp4">
         </video>
-        <script src="{{ asset('js/audio.js') }}"></script>
+        <script>
+            const bgVideo = document.getElementById('bg-video');
+            if (bgVideo) {
+                bgVideo.play().catch(() => {
+                    // Autoplay blocked; will play on first user interaction
+                    document.addEventListener('click', () => bgVideo.play(), { once: true });
+                });
+            }
+        </script>
 
+        <div class="overlay"></div>
 
         <div class="overlay"></div>
 

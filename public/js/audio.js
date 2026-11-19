@@ -1,50 +1,82 @@
-const bgm = document.getElementById('haikyuu-bgm');
-const toggleBtn = document.getElementById('music-toggle');
+(function () {
+    const bgm = document.getElementById('haikyuu-bgm');
+    const toggleBtn = document.getElementById('music-toggle');
 
-bgm.volume = 0.5;
+    if (!bgm || !toggleBtn) return;
 
-// 1. Restore the time position
-const savedTime = localStorage.getItem('bgm_time');
-if (savedTime) {
-    bgm.currentTime = parseFloat(savedTime);
-}
+    bgm.volume = 0.5;
 
-// 2. Check if it was playing before refresh
-const wasPlaying = localStorage.getItem('bgm_playing') === 'true';
+    const KEY_TIME = 'bgm_time';
+    const KEY_PLAYING = 'bgm_playing';
 
-if (wasPlaying) {
-    // Try to play immediately
-    bgm.play().then(() => {
-        toggleBtn.innerText = "🔇 Pause Music";
-    }).catch(() => {
-        // Browser blocked autoplay. Wait for the user to click anywhere to start.
-        toggleBtn.innerText = "🎵 Resume Music";
-        const unlock = () => {
-            bgm.play();
-            toggleBtn.innerText = "🔇 Pause Music";
-            document.removeEventListener('click', unlock);
-        };
-        document.addEventListener('click', unlock);
-    });
-}
+    // Sync button text with actual playback state (ground truth)
+    function updateButton() {
+        toggleBtn.innerText = bgm.paused ? "🎵 Play Music" : "🔇 Pause Music";
+    }
 
-// 3. Toggle button logic
-toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevents the 'unlock' event from firing twice
-    if (bgm.paused) {
-        bgm.play();
-        localStorage.setItem('bgm_playing', 'true');
-        toggleBtn.innerText = "🔇 Pause Music";
+    // Save playback state before navigating away (survives page reloads)
+    function saveState() {
+        sessionStorage.setItem(KEY_TIME, bgm.currentTime);
+        sessionStorage.setItem(KEY_PLAYING, bgm.paused ? 'false' : 'true');
+    }
+
+    // Restore playback state from sessionStorage
+    function restoreState() {
+        const savedTime = sessionStorage.getItem(KEY_TIME);
+        if (savedTime) {
+            bgm.currentTime = parseFloat(savedTime);
+        }
+        return sessionStorage.getItem(KEY_PLAYING) === 'true';
+    }
+
+    // Try to autoplay (browsers may block without a user gesture)
+    function tryPlay() {
+        bgm.play().then(() => {
+            updateButton();
+            sessionStorage.setItem(KEY_PLAYING, 'true');
+        }).catch(() => {
+            // Autoplay blocked; button reflects the real paused state
+            updateButton();
+            const unlock = () => {
+                bgm.play().then(() => {
+                    updateButton();
+                    sessionStorage.setItem(KEY_PLAYING, 'true');
+                });
+                document.removeEventListener('click', unlock);
+            };
+            document.addEventListener('click', unlock);
+        });
+    }
+
+    const wasPlaying = restoreState();
+    if (wasPlaying) {
+        tryPlay();
     } else {
-        bgm.pause();
-        localStorage.setItem('bgm_playing', 'false');
-        toggleBtn.innerText = "🎵 Play Music";
+        updateButton();
     }
-});
 
-// 4. Save progress (increased interval to 1s for better performance)
-setInterval(() => {
-    if (!bgm.paused) {
-        localStorage.setItem('bgm_time', bgm.currentTime);
-    }
-}, 1000);
+    // Save state before page unloads (form submission = navigation)
+    window.addEventListener('pagehide', saveState);
+    window.addEventListener('beforeunload', saveState);
+
+    // Toggle button logic
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents the 'unlock' event from firing twice
+        if (bgm.paused) {
+            bgm.play().then(() => {
+                updateButton();
+                sessionStorage.setItem(KEY_PLAYING, 'true');
+            });
+        } else {
+            bgm.pause();
+            updateButton();
+            sessionStorage.setItem(KEY_PLAYING, 'false');
+        }
+    });
+
+    // Periodic backup save (every 1s)
+    setInterval(() => {
+        sessionStorage.setItem(KEY_TIME, bgm.currentTime);
+        sessionStorage.setItem(KEY_PLAYING, bgm.paused ? 'false' : 'true');
+    }, 1000);
+})();
